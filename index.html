@@ -12,6 +12,7 @@
       background-color: #F7F7F5;
       color: #2F2F2F;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     .container {
@@ -24,11 +25,22 @@
       font-weight: 500;
     }
 
+    /* HERO */
     .hero {
       text-align: center;
       padding: 100px 20px 60px 20px;
       background-color: #F0F0ED;
       border-bottom: 1px solid #E0E0E0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFade 1s forwards;
+    }
+
+    @keyframes heroFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero h1 {
@@ -62,23 +74,41 @@
       transform: translateY(-2px);
     }
 
+    /* SECTIONS */
     .section {
       margin-top: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
     }
 
-    /* BEFORE/AFTER HOVER SLIDE */
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* HOVER EFFECTS */
+    .box:hover, .feature:hover {
+      transform: translateY(-4px);
+      transition: transform 0.3s ease;
+    }
+
+    /* BEFORE/AFTER SLIDE */
     .slide-container {
       position: relative;
       width: 100%;
       max-width: 400px;
+      aspect-ratio: 4 / 3;
       margin: auto;
       overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     }
 
     .slide-img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
       transition: transform 1s ease-in-out;
     }
@@ -101,6 +131,7 @@
       margin-top: 30px;
     }
 
+    /* FEATURES */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -117,6 +148,15 @@
       font-weight: 500;
     }
 
+    /* IMAGES */
+    img.demo, img.lifestyle {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      display: block;
+      margin-top: 20px;
+    }
+
     .footer {
       text-align: center;
       padding: 60px 20px;
@@ -125,7 +165,6 @@
       border-top: 1px solid #E0E0E0;
     }
 
-    /* Responsive tweaks */
     @media(max-width: 768px){
       .hero h1 { font-size: 36px; }
       .hero p { font-size: 18px; }
@@ -143,7 +182,7 @@
   </div>
 
   <!-- BEFORE AFTER -->
-  <div class="container section">
+  <div class="container section" id="beforeafter">
     <h2>That space you ignore? It doesn’t have to be wasted.</h2>
     <div class="before-after">
       <div class="slide-container">
@@ -178,7 +217,13 @@
   <!-- DEMO -->
   <div class="container section">
     <h2>See it in action</h2>
-    <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" alt="Demo video" style="width:100%; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.05);">
+    <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="demo" alt="Demo video">
+  </div>
+
+  <!-- LIFESTYLE -->
+  <div class="container section">
+    <h2>Small space, fully used</h2>
+    <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="lifestyle" alt="Lifestyle">
   </div>
 
   <!-- CTA -->
@@ -192,5 +237,18 @@
     © 2026 Nexora. All rights reserved.
   </div>
 
+  <script>
+    // Scroll-triggered fade-in
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
 </body>
 </html>
