@@ -1,59 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexora</title>
-<style>
-body{
-    margin:0; font-family:Arial,sans-serif; background:#0f172a; color:white;
-}
-header{
-    padding:60px; text-align:center;
-}
-h1{font-size:50px; margin-bottom:20px;}
-p{font-size:22px; margin-bottom:40px;}
-button{
-    padding:12px 30px; font-size:18px; color:#0f172a; background:#38bdf8;
-    border:none; border-radius:8px; cursor:pointer;
-}
-button:hover{background:#0ea5e9;}
-section{padding:60px; text-align:center;}
-footer{padding:30px; text-align:center; font-size:14px; background:#111827;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexora</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #F7F7F5;
+      color: #2F2F2F;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      font-weight: 500;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #A8B5A2;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .section {
+      margin-top: 60px;
+    }
+
+    .before-after {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      flex: 1;
+      background: #fff;
+      padding: 20px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .box img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      background: #fff;
+      padding: 20px;
+      border-radius: 6px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Nexora</h1>
-    <p>Smart Solutions for Modern Living</p>
-    <button onclick="window.location='#contact'">Contact Us</button>
-</header>
+  <!-- HERO -->
+  <div class="hero container">
+    <h1>Fits Where Nothing Else Does</h1>
+    <p>Slides into tight 2–4 inch gaps to turn wasted space into usable storage.</p>
+    <a href="#" class="btn">See How It Works</a>
+  </div>
 
-<section id="features">
-    <h2>Our Services</h2>
-    <p>Branding, E-commerce, and Web Solutions for Modern Businesses</p>
-</section>
+  <!-- BEFORE AFTER -->
+  <div class="container section">
+    <h2>That space you ignore? It doesn’t have to be wasted.</h2>
+    <div class="before-after">
+      <div class="box">
+        <img src="https://via.placeholder.com/400x300" alt="Before">
+        <p>Before: cluttered, unusable space</p>
+      </div>
+      <div class="box">
+        <img src="https://via.placeholder.com/400x300" alt="After">
+        <p>After: clean, functional storage</p>
+      </div>
+    </div>
+  </div>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: contact@nexorabrandco.com</p>
-</section>
+  <!-- PROBLEM -->
+  <div class="container section">
+    <h2>Most storage solutions weren’t built for real spaces</h2>
+    <ul>
+      <li>Too wide for tight gaps</li>
+      <li>Hard to access everyday items</li>
+      <li>Bulky and cheap-looking</li>
+    </ul>
+  </div>
 
-<footer>
-    &copy; 2026 Nexora Commerce LLC
-</footer>
+  <!-- SOLUTION -->
+  <div class="container section">
+    <h2>Designed for the spaces others miss</h2>
+    <div class="features">
+      <div class="feature">Fits 2–4 inch gaps most shelves can’t</div>
+      <div class="feature">Slides out smoothly for easy access</div>
+      <div class="feature">Holds daily essentials without clutter</div>
+      <div class="feature">Minimal design that blends into your home</div>
+    </div>
+  </div>
 
-</body>
-</html>
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: support@nexorabrandco.com</p>
-</section>
+  <!-- DEMO -->
+  <div class="container section">
+    <h2>See it in action</h2>
+    <img src="https://via.placeholder.com/800x400" alt="Demo video">
+  </div>
 
-<footer>
-    &copy; 2026 Nexora Commerce LLC
-</footer>
+  <!-- LIFESTYLE -->
+  <div class="container section">
+    <h2>Small space, fully used</h2>
+    <img src="https://via.placeholder.com/800x400" alt="Lifestyle">
+  </div>
+
+  <!-- CTA -->
+  <div class="hero container">
+    <h2>Upgrade Your Space</h2>
+    <a href="#" class="btn">Shop Now</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2026 Nexora. All rights reserved.
+  </div>
 
 </body>
 </html>
