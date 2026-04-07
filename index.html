@@ -6,31 +6,6 @@
   <title>Nexora</title>
 
   <style>
-.slide-container {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.slide-img {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 1s ease-in-out;
-}
-
-.slide-container:hover .slide-img.before {
-  transform: translateX(-100%);
-}
-
-.slide-container:hover .slide-img.after {
-  transform: translateX(-100%);
-}
-
     body {
       margin: 0;
       font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -91,31 +66,39 @@
       margin-top: 80px;
     }
 
+    /* BEFORE/AFTER HOVER SLIDE */
+    .slide-container {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    }
+
+    .slide-img {
+      width: 100%;
+      display: block;
+      transition: transform 1s ease-in-out;
+    }
+
+    .slide-container .after {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .slide-container:hover .before {
+      transform: translateX(-100%);
+    }
+
     .before-after {
       display: flex;
       gap: 24px;
       flex-wrap: wrap;
       justify-content: center;
-    }
-
-    .box {
-      flex: 1;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-    }
-
-    .box:hover {
-      transform: translateY(-3px);
-    }
-
-    .box img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 12px;
+      margin-top: 30px;
     }
 
     .features {
@@ -160,11 +143,16 @@
   </div>
 
   <!-- BEFORE AFTER -->
-<div class="box slide-container">
-  <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/beforeproductimage.PNG" class="slide-img before" alt="Before">
-  <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="slide-img after" alt="After">
-  <p>Hover to see the transformation</p>
-</div>
+  <div class="container section">
+    <h2>That space you ignore? It doesn’t have to be wasted.</h2>
+    <div class="before-after">
+      <div class="slide-container">
+        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/beforeproductimage.PNG" class="slide-img before" alt="Before">
+        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="slide-img after" alt="After">
+        <p style="text-align:center; margin-top:10px;">Hover to see the transformation</p>
+      </div>
+    </div>
+  </div>
 
   <!-- PROBLEM -->
   <div class="container section">
@@ -190,13 +178,7 @@
   <!-- DEMO -->
   <div class="container section">
     <h2>See it in action</h2>
-    <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" alt="Demo video">
-  </div>
-
-  <!-- LIFESTYLE -->
-  <div class="container section">
-    <h2>Small space, fully used</h2>
-    <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" alt="Lifestyle">
+    <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" alt="Demo video" style="width:100%; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.05);">
   </div>
 
   <!-- CTA -->
