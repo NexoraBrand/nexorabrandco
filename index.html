@@ -3,198 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexora | Elevate Your Space</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-
+  <title>Nexora | Intentional Storage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #F7F7F5;
-      --hero-bg: #F0F0ED;
-      --text-main: #2F2F2F;
-      --text-muted: #5F5F5F;
-      --accent: #A8B5A2;
-      --accent-hover: #8aa28e;
+      --bg: #F7F5F2;
+      --accent: #5E6D5B; /* Eucalyptus Green */
+      --text: #2F2F2F;
+      --muted: #706F6C;
       --white: #FFFFFF;
-      --shadow: 0 10px 30px rgba(0,0,0,0.05);
-      --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
+    h1, h2, h3 { 
+      font-family: 'Lora', serif; 
+      font-weight: 500; 
+      margin-bottom: 0.5em;
     }
 
-    /* HERO SECTION */
+    .container { padding: 40px 24px; max-width: 600px; margin: auto; }
+
+    /* HERO: Lifestyle First */
     .hero {
+      padding: 60px 24px;
       text-align: center;
-      padding: 80px 20px;
-      background-color: var(--hero-bg);
+      background-color: #EAE7E2;
     }
 
-    .hero h1 {
-      font-size: clamp(28px, 8vw, 56px);
-      margin-bottom: 20px;
-      line-height: 1.1;
-    }
+    .hero h1 { font-size: 32px; font-style: italic; }
+    .hero p { font-size: 18px; color: var(--muted); margin-bottom: 30px; }
 
-    /* BUTTONS */
     .btn {
-      display: inline-block;
-      padding: 16px 32px;
-      background-color: var(--accent);
+      display: block;
+      width: 100%;
+      background: var(--accent);
       color: white;
       text-decoration: none;
-      border-radius: 50px;
+      padding: 18px;
+      border-radius: 4px; /* Less round = more intentional/premium */
       font-weight: 600;
-      transition: var(--transition);
-    }
-
-    /* MOBILE FRIENDLY BEFORE/AFTER */
-    .comparison-wrapper {
-      max-width: 500px;
-      margin: 20px auto;
-      text-align: center;
-    }
-
-    .slide-container {
-      position: relative;
-      width: 100%;
-      /* Adjusting aspect ratio for mobile view */
-      aspect-ratio: 1 / 1.2; 
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      touch-action: pan-y; /* Ensures scrolling still works */
-    }
-
-    .slide-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none; /* Prevents long-press image saving from breaking interaction */
-    }
-
-    .before {
-      z-index: 2;
-      transition: var(--transition);
-      border-right: 2px solid white;
-    }
-
-    /* Desktop Hover Logic */
-    @media (min-width: 1024px) {
-      .slide-container:hover .before {
-        transform: translateX(-100%);
-      }
-    }
-
-    /* Mobile Interaction Logic via Class */
-    .slide-container.reveal-after .before {
-      transform: translateX(-100%);
-    }
-
-    .label {
-      position: absolute;
-      bottom: 15px;
-      padding: 6px 12px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: bold;
-      z-index: 3;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-    }
-    .label-before { left: 15px; }
-    .label-after { right: 15px; z-index: 1; }
-
-    /* FEATURES GRID */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 15px;
+      font-size: 14px;
     }
 
-    .feature {
+    /* THE CLARITY SECTION (Problem/Solution) */
+    .feature-list { list-style: none; padding: 0; margin: 40px 0; }
+    .feature-list li {
+      padding: 20px 0;
+      border-bottom: 1px solid #E0DDD9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feature-list span { color: var(--accent); font-weight: 600; }
+
+    /* MOBILE SLIDER: TAP TO REVEAL */
+    .comparison-box {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    
+    .comparison-box img { width: 100%; display: block; }
+    
+    .after-img {
+      position: absolute;
+      top: 0; left: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    /* On Mobile: Tap and hold or click toggles visibility */
+    .comparison-box.active .after-img { opacity: 1; }
+
+    .tap-hint {
+      text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    /* REVIEWS: Grove/Our Place style */
+    .review {
       background: var(--white);
       padding: 30px;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
+      border-radius: 8px;
+      margin-top: 40px;
+    }
+    .review p { font-style: italic; font-size: 18px; }
+    .review-author { font-weight: 600; color: var(--accent); font-size: 14px; }
+
+    .product-img {
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 40px;
     }
 
-    .section {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    footer {
+        padding: 60px 24px;
+        text-align: center;
+        font-size: 12px;
+        color: var(--muted);
     }
   </style>
 </head>
-
 <body>
 
-  <header class="hero">
-    <div class="container">
-      <h1>Fits Where Nothing Else Does</h1>
-      <p>Turn wasted gaps into usable storage instantly.</p>
-      <a href="#" class="btn">Shop Now</a>
-    </div>
-  </header>
-
-  <section class="container section">
-    <div class="comparison-wrapper">
-      <h2>See the Transformation</h2>
-      <div class="slide-container" id="mobileSlider">
-        <span class="label label-before">Before</span>
-        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/beforeproductimage.PNG" class="slide-img before" alt="Unused gap">
-        
-        <span class="label label-after">After</span>
-        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="slide-img after" alt="Nexora storage">
-      </div>
-      <p style="color: #888; font-size: 14px; margin-top: 10px;">Tap or hover to toggle</p>
-    </div>
+  <section class="hero">
+    <h1>Reclaim the quiet corners of your home.</h1>
+    <p>Slides into 2-inch gaps most shelves can’t fit. Turn wasted space into functional storage in seconds.</p>
+    <a href="#product" class="btn">Shop the Nexora Slim</a>
   </section>
 
-  <section class="container section">
-    <div class="features">
-      <div class="feature"><h3>Ultra-Slim</h3><p>Perfect for 2–4 inch gaps.</p></div>
-      <div class="feature"><h3>Smooth Glide</h3><p>Effortless access every time.</p></div>
+  <div class="container">
+    <h2>The space you ignore? It’s valuable.</h2>
+    <div class="comparison-box" id="compare">
+        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/beforeproductimage.PNG" alt="Before">
+        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="after-img" alt="After">
     </div>
+    <p class="tap-hint">Tap the image to see the transformation</p>
+
+    <ul class="feature-list">
+        <li><span>01</span> Built for 2–4 inch crevices</li>
+        <li><span>02</span> Silent-glide rollers</li>
+        <li><span>03</span> Moisture-resistant wood finish</li>
+    </ul>
+
+    <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="product-img" alt="Nexora in home">
+
+    <div class="review">
+        <p>“Finally, a way to store my laundry detergents that doesn't look like a plastic mess. It feels like it was built with the house.”</p>
+        <span class="review-author">— SARAH J., MINIMALIST BLOGGER</span>
+    </div>
+  </div>
+
+  <section class="hero" id="product" style="background: var(--white);">
+    <h2>Ready to declutter?</h2>
+    <p>Free shipping on your first intentional upgrade.</p>
+    <a href="#" class="btn">Get your Nexora</a>
   </section>
+
+  <footer>
+    &copy; 2026 Nexora. Designed for the small moments.
+  </footer>
 
   <script>
-    // 1. Mobile Tap Interaction for the Slider
-    const slider = document.getElementById('mobileSlider');
-    slider.addEventListener('click', () => {
-      slider.classList.toggle('reveal-after');
+    const compare = document.getElementById('compare');
+    compare.addEventListener('click', () => {
+        compare.classList.toggle('active');
     });
-
-    // 2. Scroll Reveal Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.section').forEach(s => observer.observe(s));
   </script>
 </body>
 </html>
