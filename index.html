@@ -18,7 +18,7 @@
       --accent-hover: #8aa28e;
       --white: #FFFFFF;
       --shadow: 0 10px 30px rgba(0,0,0,0.05);
-      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     body {
@@ -33,8 +33,171 @@
     .container {
       max-width: 1100px;
       margin: auto;
-      padding: 60px 20px;
+      padding: 40px 20px;
     }
+
+    /* HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background-color: var(--hero-bg);
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 8vw, 56px);
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    /* MOBILE FRIENDLY BEFORE/AFTER */
+    .comparison-wrapper {
+      max-width: 500px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .slide-container {
+      position: relative;
+      width: 100%;
+      /* Adjusting aspect ratio for mobile view */
+      aspect-ratio: 1 / 1.2; 
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      touch-action: pan-y; /* Ensures scrolling still works */
+    }
+
+    .slide-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none; /* Prevents long-press image saving from breaking interaction */
+    }
+
+    .before {
+      z-index: 2;
+      transition: var(--transition);
+      border-right: 2px solid white;
+    }
+
+    /* Desktop Hover Logic */
+    @media (min-width: 1024px) {
+      .slide-container:hover .before {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Mobile Interaction Logic via Class */
+    .slide-container.reveal-after .before {
+      transform: translateX(-100%);
+    }
+
+    .label {
+      position: absolute;
+      bottom: 15px;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+      z-index: 3;
+      text-transform: uppercase;
+    }
+    .label-before { left: 15px; }
+    .label-after { right: 15px; z-index: 1; }
+
+    /* FEATURES GRID */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .feature {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Fits Where Nothing Else Does</h1>
+      <p>Turn wasted gaps into usable storage instantly.</p>
+      <a href="#" class="btn">Shop Now</a>
+    </div>
+  </header>
+
+  <section class="container section">
+    <div class="comparison-wrapper">
+      <h2>See the Transformation</h2>
+      <div class="slide-container" id="mobileSlider">
+        <span class="label label-before">Before</span>
+        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/beforeproductimage.PNG" class="slide-img before" alt="Unused gap">
+        
+        <span class="label label-after">After</span>
+        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="slide-img after" alt="Nexora storage">
+      </div>
+      <p style="color: #888; font-size: 14px; margin-top: 10px;">Tap or hover to toggle</p>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="features">
+      <div class="feature"><h3>Ultra-Slim</h3><p>Perfect for 2–4 inch gaps.</p></div>
+      <div class="feature"><h3>Smooth Glide</h3><p>Effortless access every time.</p></div>
+    </div>
+  </section>
+
+  <script>
+    // 1. Mobile Tap Interaction for the Slider
+    const slider = document.getElementById('mobileSlider');
+    slider.addEventListener('click', () => {
+      slider.classList.toggle('reveal-after');
+    });
+
+    // 2. Scroll Reveal Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section').forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>    }
 
     h1, h2 {
       font-weight: 500;
