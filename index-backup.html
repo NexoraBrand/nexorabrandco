@@ -1,55 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexora</title>
-<style>
-body{
-    margin:0; font-family:Arial,sans-serif; background:#0f172a; color:white;
-}
-header{
-    padding:60px; text-align:center;
-}
-h1{font-size:50px; margin-bottom:20px;}
-p{font-size:22px; margin-bottom:40px;}
-button{
-    padding:12px 30px; font-size:18px; color:#0f172a; background:#38bdf8;
-    border:none; border-radius:8px; cursor:pointer;
-}
-button:hover{background:#0ea5e9;}
-section{padding:60px; text-align:center;}
-footer{padding:30px; text-align:center; font-size:14px; background:#111827;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexora | Intentional Storage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F7F5F2;
+      --accent: #5E6D5B; /* Eucalyptus Green */
+      --text: #2F2F2F;
+      --muted: #706F6C;
+      --white: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    h1, h2, h3 { 
+      font-family: 'Lora', serif; 
+      font-weight: 500; 
+      margin-bottom: 0.5em;
+    }
+
+    .container { padding: 40px 24px; max-width: 600px; margin: auto; }
+
+    /* HERO: Lifestyle First */
+    .hero {
+      padding: 60px 24px;
+      text-align: center;
+      background-color: #EAE7E2;
+    }
+
+    .hero h1 { font-size: 32px; font-style: italic; }
+    .hero p { font-size: 18px; color: var(--muted); margin-bottom: 30px; }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 18px;
+      border-radius: 4px; /* Less round = more intentional/premium */
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    /* THE CLARITY SECTION (Problem/Solution) */
+    .feature-list { list-style: none; padding: 0; margin: 40px 0; }
+    .feature-list li {
+      padding: 20px 0;
+      border-bottom: 1px solid #E0DDD9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feature-list span { color: var(--accent); font-weight: 600; }
+
+    /* MOBILE SLIDER: TAP TO REVEAL */
+    .comparison-box {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    
+    .comparison-box img { width: 100%; display: block; }
+    
+    .after-img {
+      position: absolute;
+      top: 0; left: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    /* On Mobile: Tap and hold or click toggles visibility */
+    .comparison-box.active .after-img { opacity: 1; }
+
+    .tap-hint {
+      text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    /* REVIEWS: Grove/Our Place style */
+    .review {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 40px;
+    }
+    .review p { font-style: italic; font-size: 18px; }
+    .review-author { font-weight: 600; color: var(--accent); font-size: 14px; }
+
+    .product-img {
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 40px;
+    }
+
+    footer {
+        padding: 60px 24px;
+        text-align: center;
+        font-size: 12px;
+        color: var(--muted);
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Nexora</h1>
-    <p>Smart Solutions for Modern Living</p>
-    <button onclick="window.location='#contact'">Contact Us</button>
-</header>
+  <section class="hero">
+    <h1>Reclaim the quiet corners of your home.</h1>
+    <p>Slides into 2-inch gaps most shelves can’t fit. Turn wasted space into functional storage in seconds.</p>
+    <a href="#product" class="btn">Shop the Nexora Slim</a>
+  </section>
 
-<section id="features">
-    <h2>Our Services</h2>
-    <p>Branding, E-commerce, and Web Solutions for Modern Businesses</p>
-</section>
+  <div class="container">
+    <h2>The space you ignore? It’s valuable.</h2>
+    <div class="comparison-box" id="compare">
+        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/beforeproductimage.PNG" alt="Before">
+        <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="after-img" alt="After">
+    </div>
+    <p class="tap-hint">Tap the image to see the transformation</p>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: contact@nexorabrandco.com</p>
-</section>
+    <ul class="feature-list">
+        <li><span>01</span> Built for 2–4 inch crevices</li>
+        <li><span>02</span> Silent-glide rollers</li>
+        <li><span>03</span> Moisture-resistant wood finish</li>
+    </ul>
 
-<footer>
-    &copy; 2026 Nexora Commerce LLC
-</footer>
+    <img src="https://raw.githubusercontent.com/NexoraBrand/nexorabrandco/nexora-redesign/assets/afterproductimage.PNG" class="product-img" alt="Nexora in home">
 
+    <div class="review">
+        <p>“Finally, a way to store my laundry detergents that doesn't look like a plastic mess. It feels like it was built with the house.”</p>
+        <span class="review-author">— SARAH J., MINIMALIST BLOGGER</span>
+    </div>
+  </div>
+
+  <section class="hero" id="product" style="background: var(--white);">
+    <h2>Ready to declutter?</h2>
+    <p>Free shipping on your first intentional upgrade.</p>
+    <a href="#" class="btn">Get your Nexora</a>
+  </section>
+
+  <footer>
+    &copy; 2026 Nexora. Designed for the small moments.
+  </footer>
+
+  <script>
+    const compare = document.getElementById('compare');
+    compare.addEventListener('click', () => {
+        compare.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: support@nexorabrandco.com</p>
-</section>
-
-<footer>
-    &copy; 2026 Nexora Commerce LLC
